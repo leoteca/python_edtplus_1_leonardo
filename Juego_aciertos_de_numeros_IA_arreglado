@@ -1,0 +1,34 @@
+# Juego de adivinar un número
+import random
+
+# Variables
+numero_secreto = random.randint(1, 10)
+intentos = 0
+
+# Lista de jugadores
+jugadores = ["Juan", "María", "Pedro"]
+
+# Mensaje de bienvenida
+print("¡Bienvenido al juego de adivinar el número secreto!")
+
+# Ciclo para cada jugador
+for jugador in jugadores:
+    print(f"\nTurno de {jugador}:")
+    
+    # Ciclo de intentos
+    while True:
+        intento = int(input("Introduce un número del 1 al 10: "))
+        
+        # Condicional para verificar si el número es correcto
+        if intento == numero_secreto:
+            print(f"¡Felicidades, {jugador}! ¡Has adivinado el número secreto!")
+            numero_secreto = random.randint(1, 10)
+            break
+        else:
+            print("Número incorrecto. ¡Inténtalo de nuevo!")
+        
+        intentos += 1
+
+# Mensaje final
+print(f"\nEl número secreto era: {numero_secreto}")
+print(f"¡Gracias por jugar! Total de intentos: {intentos}")
