@@ -30,5 +30,5 @@ for jugador in jugadores:
         intentos += 1
 
 # Mensaje final
-print(f"\nEl número secreto era: {numero_secreto}")
+
 print(f"¡Gracias por jugar! Total de intentos: {intentos}")
