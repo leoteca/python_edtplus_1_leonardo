@@ -1,0 +1,10 @@
+numero = int(input("dime un numero  "))
+
+numero2 = int(input("dime un numero  "))
+
+def sumar_valores_con_return_input(a: int, b: int):
+    return a + b
+
+resultado_obtenido_en_la_suma_con_return_input = sumar_valores_con_return_input(numero, numero2)
+
+print("el resultado de esta suma es", resultado_obtenido_en_la_suma_con_return_input)
