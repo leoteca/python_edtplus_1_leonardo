@@ -1,0 +1,12 @@
+
+def sumar_valores_con_return_input():
+
+    numero = int(input("dime un número   "))
+
+    numero2= int(input("dime un numero un número más   "))
+
+    print("Esta suma da un total de", numero + numero2)
+
+    return numero + numero2
+
+resultado_obtenido_en_la_suma_con_return_input = sumar_valores_con_return_input()
