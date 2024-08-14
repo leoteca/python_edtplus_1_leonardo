@@ -13,7 +13,7 @@ class Bullet(Sprite):
         super().__init__()
         self.screen = a_game.screen
         self.color = a_game.colorbala
-        self.rect = pygame.Rect(0,0, a_game.anchobala, a_game.altobala)
+        self.rect = pygame.Rect(0,0, a_game.anchobala, a_game.largobala)
         self.rect.midtop = a_game.nave.rect.midtop
         self.juego = a_game
         self.y = float(self.rect.y)
