@@ -12,12 +12,17 @@ from lazer import Bullet
 
 # Creamos una clase en la cual especificaremos como queremos que se vea nuestra pantalla y los elmentos que aparezcan en ella.
 
+from alien import Alien
+
 class GuerraEstelar:
     # Dentro de la clase definimos una función en donde personalizaremos la pantalla.
     def __init__(self):
         pygame.init()
+        self.ancho = 1300
         # Le especificaremos a la pantalla su altura y su anchura.
-        self.screen = pygame.display.set_mode((1000,600))
+        self.screen = pygame.display.set_mode((self.ancho,600))
+        self.screen_width = self.screen.get_rect().width
+        self.screen_height = self.screen.get_rect().height
         # Le especificaremos a la pantalla que título debe poner.
         pygame.display.set_caption("Guerra Estelar")
         # Y le dirimos cual va a ser su color de fondo.
@@ -31,6 +36,8 @@ class GuerraEstelar:
         self.nave = Nave(self)
         # Traemos la apariencia de el lazer.
         self.bullets = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
+        self._create_fleet()
 
     # Creamos una función que nos permita reproducir la pantalla. 
     def correr_juego(self):
@@ -79,6 +86,8 @@ class GuerraEstelar:
             self.bullets.update()
             for bullet in self.bullets.sprites():
                 bullet.draw_bullet()
+                
+            self.aliens.draw(self.screen)
 
             pygame.display.flip()
 
@@ -89,6 +98,18 @@ class GuerraEstelar:
         self.bullets.add(new_bullet)
 
 
+    def _create_fleet(self):
+        alien = Alien(self)
+        alien_width = alien.rect.width
+        availableSpace = self.ancho - (2 * alien_width)
+        numerodeAliens = availableSpace // (2 * alien_width)
+        
+        for numeroAlien in range(numerodeAliens):
+            alien = Alien(self)
+            alien.x = alien_width + 2 * alien_width * numeroAlien
+            alien.rect.x = alien.x
+            self.aliens.add(alien)
+        
 # Y por último le decimos que si el nombre es igual al main, reproduzca la función correr juego.
 if __name__ == "__main__":
 
