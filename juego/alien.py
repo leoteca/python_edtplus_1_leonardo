@@ -7,15 +7,22 @@ class Alien (Sprite):
         super().__init__()
         self.screen = a_game.screen
         
-        self.image = pygame.image.load("C:/Users/DELL/Documents/edtplus_1_python_leonardo/juego/imagenes/alien.png")
+        self.image = pygame.image.load("juego/imagenes/alien.png")
+        self.image = pygame.transform.scale(self.image, (50, 50))
         self.rect = self.image.get_rect()
         
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
         
         self.x = float(self.rect.x)
-        self.velocidad_Alien = a_game.velocidad_Alien
+        self.juego = a_game
+        # self.juego = a_game
         
     def update(self):
-        self.x += self.velocidad_Alien
-        self.rect.x = self.x
+       self.x += (self.juego.velocidad_Alien * self.juego.flota_direccion)
+       self.rect.x = self.x
+
+    def valida_bordes(self):
+        screen_rect = self.screen.get_rect()
+        if self.rect.right >= screen_rect.right or self.rect.left <= 0:
+            return True
